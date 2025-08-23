@@ -37,7 +37,7 @@ func main() {
 
 	searchQ := list.New()
 
-	for _, name := range graph {
+	for _, name := range graph { // maps are not in order, this structure needs to be reworked
 		searchQ.PushBack(name)
 	}
 
@@ -46,14 +46,6 @@ func main() {
 		neighbors := firstElement.Value
 		searchQ.Remove(firstElement)
 		fmt.Printf("main: checking %q\n", neighbors)
-		for _, person := range neighbors {
-
-			if isSeller(person) {
-				fmt.Printf("%q sells mangos\n", person)
-				foundSeller = true
-
-			}
-		}
 	}
 
 	if !foundSeller {
